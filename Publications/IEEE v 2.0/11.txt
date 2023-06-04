@@ -1,0 +1,546 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage{blindtext, graphicx}
+\usepackage{float}
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Implementation of Feedback Control and Obstacle Detection for Car Type Robot}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Akshay A. Dhotre}
+\IEEEauthorblockA{Department of Electronics Engineering \\ 
+Walchand College of Engineering, Sangli\\
+Email: a2dhotre@gmail.com}
+\and
+\IEEEauthorblockN{Dr. Mrs. S. S. Deshpande}
+\IEEEauthorblockA{Professor, Department of Electronics Engineering \\
+Walchand College of Engineering, Sangli\\
+Email: shraddha.deshpande@walchandsangli.ac.in}
+}
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+%\boldmath
+	Auto-navigation is an essential feature in developement of autonomous robots.
+	This paper describes an approach to implement feedback control for driving car type robot on proper path and obstacle detection.
+	The implementation is based on Raspberry Pi board. 
+	This board reads physical data from sensors and processes it using motion planner and obstacle detection algorithm, then produces control signals in the form of pulses to control strring angle and drive.
+\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Raspberry Pi (RPi), Light Detection and Ranging (LIDAR), Pulse Width Modulation (PWM).
+\end{IEEEkeywords}
+
+
+\IEEEpeerreviewmaketitle
+
+
+
+
+\section{Introduction}
+The vision of self-driving and parking cars promises to bring fundamental change to one of the most essential aspects of our daily lives. 
+Although automatic gears are common in cars, complete auto-drive car is still not a reality. 
+Autonomous driving involves high machine intelligence and decision making capabilities for the vehicle.
+For autonomous car robot auto navigation is essential, hence feedback controller and obstacle detection will help in this area and car movements will be more accurate. 
+Feedback controller designed for car will ensure accurate path planning and motion planning.\cite{paper1} \cite{paper2}
+So, overall stability and accuracy of path trajectory will improve.
+For autonomous driving car the detection of static or moving obstacle is essential to ensure safety.
+Obstacle detection will prevent car from damaging others and getting damaged. 
+This will make car safer in dense populated areas.
+The same principle of autonavigation can be used for industrial and military robots like auto fork lift trucks, intellntelligent drones etc.
+
+\section{Overview of system}
+System is based on RPi board, which is powerful enough to collect data, process it and produce control output. It has open sourse operating system and support from large community.
+
+Raspberry Pi will collect data from LIDAR (Light detection and ranging) module, compass magnetometer, rotary encoder and potentiometer on steering motor. 
+LIDAR module will give distances from obstecles around which will be useful to plan path and avoid obstacles. 
+Compass magnetometer will give orientation angle of vehicle. 
+Rotary encoder will help to calculate distance travelled and speed. 
+Steering angle can be detected using potentiometer fitted to steering servo motor.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{block_diagram}
+\caption{Block Diagram of System}
+\end{figure}
+
+
+\section{Feedback Control Approach}
+Control algorithm mainly consists of motion planner algorithm, which decides the motion of robot according to inputs. Inputs can be co-ordinates starting point and end point on plane of motion. Main part of feedback control is to read data from sensors and producing PWM signals.\cite{paper1}
+
+\subsection{Interfacing Magnetometer to RPi}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rpi_mag}
+	\caption{Magnetometer Connected to RPi}
+	\label{fig:rpi_mag}
+\end{figure}
+
+Magnetometer module measures the earths magnetic field in three axes. It provides individual readings for each axis, which may be used separately or together for 3D calculations. Also it can measure raw magnetic strength of nearby magnetic source.
+
+
+
+Here HCM5883L module is used to find orientation angle of vehicle. This module communicates with RPi using I2C bus.
+
+\subsection{Interfacing Encoder to RPi}
+
+Encoders are often used in intelligent machines to control their movements. In case of car type robots rotary opticle encodrs are used to find distance travelled by it, so as to find its relative posititon. Also using encoder readings we can calculate speed of robot. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rpi_encoder_connection}
+	\caption{RPi and Encoder Connection}
+	\label{fig:rpi_encoder_connection}
+\end{figure}
+
+\subsection{Interfacing Potentiometer to RPi}
+Besides having 40 gpios, Raspberry Pi 2 has one downside. It has no analog supporting pin.
+So, to measure analog voltages required in some applications is not directly possible.
+Here we have to use Analog to digital converter to read voltage from potentiometer.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rpi_mcp}
+	\caption{Potentiometer connected to RPi via ADC}
+	\label{fig:rpi_mcp}
+\end{figure}
+
+MCP3008 is 8-Channel ADC used which gives capability to read analog values. This IC communicates using SPI (Serial Peripheral Interface) bus.
+
+\subsection{Generating PWM from RPi}
+Raspberry pi has 40 gpio pins, one of which has hardware PWM support (Pin number 12). 
+There are many libraries written for it which support software PWM on other gpio pins. 
+They can be useful for applications requiring more number of motor controls or LED controls.
+WiringPi is one of the popular library in RPi which has function to generate software PWM on any number of GPIO pins. 
+
+``int softPwmCreate (int pin, int initValue, int Range) ;"
+
+This creates softwre controlled PWM pin. If we give Range as 100 and initial value 0, we can genertae PWM with width anything from 0 to 100.
+
+``void softPwmWrite (int pin, int value) ;"
+
+This gives the value to the pin, to create required pulse width.
+
+The PWM signals generated in this system are using this technique.
+
+\subsection{Feedback Control Algorithm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Flow_chart}
+	\caption{Feedback Control Flow Chart}
+	\label{fig:Flow_chart}
+\end{figure}
+
+
+
+
+
+
+This algorithm calculates control signal values in form of structures to travel from starting point to end point. 
+Initially the values are taken as default i.e. first value calculated by motion planner. While car starts motion, data from sensors is collected, viz. steering angle from potentiometer, orientation angle from magnetometer and distance travellded from encoder. This data is collected in structures and then compared to initially calculated values by motion planner. Then the control signals in form of PWM are so generated that the error between calculated parameters and parameters obtained from sensors is minimum as possible.\cite{paper3}
+
+
+\section{Obstacle Detection Approach}
+For autonomous driving car the detection of static or moving obstacle is essential to ensure safety. 
+To implement such obstacle detection feature there are various methods like use of Infra-Red light based detectors, use of camera, using LIDAR etc. 
+Here obstacle detectionis done using LIDAR based Sensor.
+
+LIDAR is a remote sensing method that uses light in the form of a pulsed laser to measure ranges (variable distances) to the earth. These light pulses combined with other data recorded by the airborne system generate precise, three-dimensional information about the shape of the Earth and its surface characteristics. LIDAR based sensor gives distances of obstacles nearby, so that we can use them to interpret environment around robot.\cite{paper4} For using with RPi, PulsedLight Lidar module is useful which communicates to RPi using I2C protocol. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{lidar}
+\caption{PulsedLight Lidar Module}
+\label{fig:lidar}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{lidar_connections}
+\caption{Lidar I2C Connections}
+\label{fig:lidar_connections}
+\end{figure}
+
+This module gives direct distance of obstacle in front of it. So, to know about obstacles around robot, we can rotate module and get data for 180 degree around or for 360 degree around. One approach to the obstacles around robot is by mounting LIDAR module on servo motor.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{lidar_servo}
+\caption{LIDAR Module Mounted on Servo Motor}
+\label{fig:lidar_servo}
+\end{figure}
+
+For this setup, we can precisely control the angle of servo motor, and collect data of obstacle distance corresponding to angle. Then this data is communicated to motion planner so that it avoids the angles which have obstacle nearby. 
+
+\section{Results}
+
+\subsection{Magnetometer Data}
+ Magnetometer gives readings for x, y and z directions. Using these values we can calculate orientation angle.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{magneto}
+\end{figure}
+
+\subsection{Encoder Data}
+Rotary encoder generates two pulse trains as it rotates. Using these two pulse trains the distance and direction (i.e. forward or reverse) can be found out. Also using distance travelled we can calculate speed of robot.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{enc}
+\end{figure}
+
+
+\subsection{Potentiometer Data}
+Potentiometer is interfaced using 10 bit ADC and the voltage is calobrated in steering angle, therefore the output is in form of angle in degrees.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{pot}
+\end{figure}
+
+\subsection{Robot Model after connecting all sensors}
+Pictures below shows the car model with all sensors except LIDAR module. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{car0}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{car1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{car4}
+\end{figure}
+
+
+\subsection{Motion Planner Output}
+Motion planner generates the plan according to given starting and end points. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{fb1}
+\end{figure}
+
+Output on terminal when vehicle starts running. This shows the sensors data, driving velocity to be sent to car, and steering angle value to be sent to car.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{fb2}
+\end{figure}
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+%  \newpage%
+\fi
+
+
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{paper1}
+Adeel Akhtar, Christopher Nielsen, and Steven L. Waslander, `SPath Following Using Dynamic Transverse Feedback Linearization for Car-Like Robots'. \emph{IEEE Transactions On Robotics}, VOL. 31, NO. 2, APRIL 2015.
+
+\bibitem{paper2}
+ Kichun Jo, Junsoo Kim, Dongchul Kim, Chulhoon Jang and Myoungho Sunwoo, `Development of Autonomous Car Part I: Distributed System Architecture and Development Process', \textit{IEEE Transactions on Industrial Electronics}, Vol. 61, No. 12, December 2014.
+ 
+ \bibitem{paper3}
+ LU Jiangzhou, Sepanta Sakhavat, XIE Ming and Christian Laugier, `Sliding Mode Control for Nonholonomic Mobile Robot', \textit{In Proc. of the Int. Conf. on Control, Automation, Robotics and Vision, Singapore}, December 2000.
+ 
+ \bibitem{paper4}
+ Jeffery Young, Milan Simic, `LIDAR and Monocular Based Overhanging Obstacle Detection', \textit{Knowledge-Based and Intelligent Information \& Engineering Systems 19th Annual Conference, KES-2015, Singapore}, Volume 60, 2015, Pages 1423–1432, September 2015.
+ 
+\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{picture}}]{John Doe}
+\blindtext
+\end{IEEEbiography}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+
+% that's all folks
+\end{document}
+
+
